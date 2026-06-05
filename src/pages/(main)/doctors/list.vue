@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, shallowRef, computed } from "vue";
-import { useRouter } from "vue-router";
+import { ref, shallowRef, computed, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import {
   SearchIcon,
   PlusIcon,
@@ -23,7 +23,14 @@ import BaseBreadcrumb from "@/components/shared/BaseBreadcrumb.vue";
 import UiParentCard from "@/components/shared/UiParentCard.vue";
 
 const router = useRouter();
+const route = useRoute();
 const page = ref({ title: "Doctor List" });
+
+onMounted(() => {
+  if (route.query.hospitalId) {
+    hospitalFilter.value = parseInt(route.query.hospitalId as string) || "";
+  }
+});
 const breadcrumbs = shallowRef([
   { title: "Doctors", disabled: false, href: "#" },
   { title: "List", disabled: true, href: "#" },
@@ -155,7 +162,7 @@ const doctors = ref([
 ]);
 
 const search = ref("");
-const hospitalFilter = ref("");
+const hospitalFilter = ref<string | number>("");
 const statusFilter = ref("");
 const specializationFilter = ref("");
 const deleteDialog = ref(false);
@@ -170,7 +177,7 @@ const filteredDoctors = computed(() => {
       `${d.firstName} ${d.lastName}`.toLowerCase().includes(search.value.toLowerCase()) ||
       d.email.toLowerCase().includes(search.value.toLowerCase()) ||
       d.specialization.toLowerCase().includes(search.value.toLowerCase());
-    const matchHospital = !hospitalFilter.value || d.hospitalId === hospitalFilter.value;
+    const matchHospital = !hospitalFilter.value || d.hospitalId === Number(hospitalFilter.value);
     const matchStatus = !statusFilter.value || d.status === statusFilter.value;
     const matchSpec = !specializationFilter.value || specializationFilter.value === "All" || d.specialization === specializationFilter.value;
     return matchSearch && matchHospital && matchStatus && matchSpec;

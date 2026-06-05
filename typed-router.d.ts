@@ -36,6 +36,11 @@ declare module 'vue-router/auto-routes' {
       | '/(main)/doctors/edit'
       | '/(main)/doctors/list'
       | '/(main)/doctors/profile'
+      | '/(main)/hospitals/[hospital_id]/contract'
+      | '/(main)/hospitals/[hospital_id]/dashboard'
+      | '/(main)/hospitals/[hospital_id]/department'
+      | '/(main)/hospitals/[hospital_id]/menu'
+      | '/(main)/hospitals/[hospital_id]/patient'
       | '/(main)/hospitals/add'
       | '/(main)/hospitals/edit'
       | '/(main)/hospitals/list'
@@ -74,6 +79,41 @@ declare module 'vue-router/auto-routes' {
       '/doctors/profile',
       Record<never, never>,
       Record<never, never>,
+      | never
+    >,
+    '/(main)/hospitals/[hospital_id]/contract': RouteRecordInfo<
+      '/(main)/hospitals/[hospital_id]/contract',
+      '/hospitals/:hospital_id/contract',
+      { hospital_id: ParamValue<true> },
+      { hospital_id: ParamValue<false> },
+      | never
+    >,
+    '/(main)/hospitals/[hospital_id]/dashboard': RouteRecordInfo<
+      '/(main)/hospitals/[hospital_id]/dashboard',
+      '/hospitals/:hospital_id/dashboard',
+      { hospital_id: ParamValue<true> },
+      { hospital_id: ParamValue<false> },
+      | never
+    >,
+    '/(main)/hospitals/[hospital_id]/department': RouteRecordInfo<
+      '/(main)/hospitals/[hospital_id]/department',
+      '/hospitals/:hospital_id/department',
+      { hospital_id: ParamValue<true> },
+      { hospital_id: ParamValue<false> },
+      | never
+    >,
+    '/(main)/hospitals/[hospital_id]/menu': RouteRecordInfo<
+      '/(main)/hospitals/[hospital_id]/menu',
+      '/hospitals/:hospital_id/menu',
+      { hospital_id: ParamValue<true> },
+      { hospital_id: ParamValue<false> },
+      | never
+    >,
+    '/(main)/hospitals/[hospital_id]/patient': RouteRecordInfo<
+      '/(main)/hospitals/[hospital_id]/patient',
+      '/hospitals/:hospital_id/patient',
+      { hospital_id: ParamValue<true> },
+      { hospital_id: ParamValue<false> },
       | never
     >,
     '/(main)/hospitals/add': RouteRecordInfo<
@@ -132,6 +172,11 @@ declare module 'vue-router/auto-routes' {
         | '/(main)/doctors/edit'
         | '/(main)/doctors/list'
         | '/(main)/doctors/profile'
+        | '/(main)/hospitals/[hospital_id]/contract'
+        | '/(main)/hospitals/[hospital_id]/dashboard'
+        | '/(main)/hospitals/[hospital_id]/department'
+        | '/(main)/hospitals/[hospital_id]/menu'
+        | '/(main)/hospitals/[hospital_id]/patient'
         | '/(main)/hospitals/add'
         | '/(main)/hospitals/edit'
         | '/(main)/hospitals/list'
@@ -166,6 +211,36 @@ declare module 'vue-router/auto-routes' {
     'src/pages/(main)/doctors/profile.vue': {
       routes:
         | '/(main)/doctors/profile'
+      views:
+        | never
+    }
+    'src/pages/(main)/hospitals/[hospital_id]/contract.vue': {
+      routes:
+        | '/(main)/hospitals/[hospital_id]/contract'
+      views:
+        | never
+    }
+    'src/pages/(main)/hospitals/[hospital_id]/dashboard.vue': {
+      routes:
+        | '/(main)/hospitals/[hospital_id]/dashboard'
+      views:
+        | never
+    }
+    'src/pages/(main)/hospitals/[hospital_id]/department.vue': {
+      routes:
+        | '/(main)/hospitals/[hospital_id]/department'
+      views:
+        | never
+    }
+    'src/pages/(main)/hospitals/[hospital_id]/menu.vue': {
+      routes:
+        | '/(main)/hospitals/[hospital_id]/menu'
+      views:
+        | never
+    }
+    'src/pages/(main)/hospitals/[hospital_id]/patient.vue': {
+      routes:
+        | '/(main)/hospitals/[hospital_id]/patient'
       views:
         | never
     }
